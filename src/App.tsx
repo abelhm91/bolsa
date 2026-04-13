@@ -16,22 +16,24 @@ export default function App() {
       <div className="flex h-screen overflow-hidden bg-background">
         <Sidebar />
         
-        <main className="flex-1 flex flex-col overflow-y-auto">
+        <main className="flex-1 flex flex-col min-w-0">
           <TopBar />
           
-          <Routes>
-            <Route path="/" element={<Dashboard />} />
-            <Route path="/watchlist" element={<Watchlist />} />
-            <Route path="/portfolio" element={<Portfolio />} />
-            <Route path="/orders" element={<Orders />} />
-            <Route path="/reports" element={<Reports />} />
-            <Route path="/indices" element={<Indices />} />
-            <Route path="/analysis" element={<Analysis />} />
-            <Route path="/sectors" element={<Sectors />} />
-          </Routes>
+          <div className="flex-1 overflow-y-auto">
+            <Routes>
+              <Route path="/" element={<Dashboard />} />
+              <Route path="/watchlist" element={<Watchlist />} />
+              <Route path="/portfolio" element={<Portfolio />} />
+              <Route path="/orders" element={<Orders />} />
+              <Route path="/reports" element={<Reports />} />
+              <Route path="/indices" element={<Indices />} />
+              <Route path="/analysis" element={<Analysis />} />
+              <Route path="/sectors" element={<Sectors />} />
+            </Routes>
+          </div>
 
           {/* Footer Ticker */}
-          <footer className="mt-auto bg-zinc-200 py-2 overflow-hidden whitespace-nowrap border-t border-zinc-300">
+          <footer className="flex-shrink-0 h-10 bg-zinc-200 flex items-center overflow-hidden whitespace-nowrap border-t border-zinc-300">
             <div className="flex gap-12 animate-scroll px-8">
               {[1, 2].map((i) => (
                 <div key={i} className="flex gap-12">
