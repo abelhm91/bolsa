@@ -7,20 +7,21 @@ import {
   Landmark 
 } from 'lucide-react';
 import { motion } from 'motion/react';
+import { NavLink } from 'react-router-dom';
 
 const navItems = [
-  { icon: LayoutDashboard, label: 'Dashboard', active: true },
-  { icon: Star, label: 'Watchlist' },
-  { icon: Wallet, label: 'Portfolio' },
-  { icon: ArrowLeftRight, label: 'Orders' },
-  { icon: FileText, label: 'Reports' },
+  { icon: LayoutDashboard, label: 'Dashboard', path: '/' },
+  { icon: Star, label: 'Watchlist', path: '/watchlist' },
+  { icon: Wallet, label: 'Portfolio', path: '/portfolio' },
+  { icon: ArrowLeftRight, label: 'Orders', path: '/orders' },
+  { icon: FileText, label: 'Reports', path: '/reports' },
 ];
 
 export default function Sidebar() {
   return (
     <aside className="hidden md:flex flex-col h-screen w-64 bg-surface-container border-r-0 py-8 px-4 gap-2">
       <div className="mb-8 px-2">
-        <div className="flex items-center gap-3">
+        <NavLink to="/" className="flex items-center gap-3">
           <div className="w-10 h-10 bg-primary flex items-center justify-center rounded-sm">
             <Landmark className="text-white w-6 h-6" />
           </div>
@@ -28,23 +29,25 @@ export default function Sidebar() {
             <h2 className="text-primary font-bold text-sm tracking-tight">IBEX 35</h2>
             <p className="uppercase tracking-widest text-[10px] font-bold text-zinc-500">Madrid SE</p>
           </div>
-        </div>
+        </NavLink>
       </div>
 
       <nav className="flex flex-col gap-1">
         {navItems.map((item) => (
-          <a
+          <NavLink
             key={item.label}
-            href="#"
-            className={`flex items-center gap-3 px-3 py-2.5 transition-all duration-200 rounded-sm ${
-              item.active 
-                ? 'bg-white text-primary shadow-sm' 
-                : 'text-zinc-500 hover:bg-zinc-200'
-            }`}
+            to={item.path}
+            className={({ isActive }) => 
+              `flex items-center gap-3 px-3 py-2.5 transition-all duration-200 rounded-sm ${
+                isActive 
+                  ? 'bg-white text-primary shadow-sm' 
+                  : 'text-zinc-500 hover:bg-zinc-200'
+              }`
+            }
           >
             <item.icon className="w-5 h-5" />
             <span className="uppercase tracking-widest text-[10px] font-bold">{item.label}</span>
-          </a>
+          </NavLink>
         ))}
       </nav>
 

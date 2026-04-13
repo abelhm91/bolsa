@@ -1,4 +1,5 @@
 import { Search, Bell, Settings } from 'lucide-react';
+import { NavLink } from 'react-router-dom';
 
 export default function TopBar() {
   return (
@@ -6,10 +7,46 @@ export default function TopBar() {
       <div className="flex items-center gap-8">
         <h1 className="text-xl font-bold tracking-tighter text-primary">Bolsa Española</h1>
         <nav className="hidden lg:flex items-center gap-6">
-          <a className="text-primary border-b-2 border-primary pb-1 text-sm font-medium" href="#">Market</a>
-          <a className="text-zinc-500 hover:text-primary text-sm font-medium transition-colors" href="#">Indices</a>
-          <a className="text-zinc-500 hover:text-primary text-sm font-medium transition-colors" href="#">Analysis</a>
-          <a className="text-zinc-500 hover:text-primary text-sm font-medium transition-colors" href="#">Sectors</a>
+          <NavLink 
+            to="/" 
+            className={({ isActive }) => 
+              `text-sm font-medium transition-colors pb-1 ${
+                isActive ? 'text-primary border-b-2 border-primary' : 'text-zinc-500 hover:text-primary'
+              }`
+            }
+          >
+            Market
+          </NavLink>
+          <NavLink 
+            to="/indices" 
+            className={({ isActive }) => 
+              `text-sm font-medium transition-colors pb-1 ${
+                isActive ? 'text-primary border-b-2 border-primary' : 'text-zinc-500 hover:text-primary'
+              }`
+            }
+          >
+            Indices
+          </NavLink>
+          <NavLink 
+            to="/analysis" 
+            className={({ isActive }) => 
+              `text-sm font-medium transition-colors pb-1 ${
+                isActive ? 'text-primary border-b-2 border-primary' : 'text-zinc-500 hover:text-primary'
+              }`
+            }
+          >
+            Analysis
+          </NavLink>
+          <NavLink 
+            to="/sectors" 
+            className={({ isActive }) => 
+              `text-sm font-medium transition-colors pb-1 ${
+                isActive ? 'text-primary border-b-2 border-primary' : 'text-zinc-500 hover:text-primary'
+              }`
+            }
+          >
+            Sectors
+          </NavLink>
         </nav>
       </div>
 
