@@ -1,12 +1,22 @@
-import { Search, Bell, Settings } from 'lucide-react';
+import { Search, Bell, Settings, Menu } from 'lucide-react';
 import { NavLink } from 'react-router-dom';
 
-export default function TopBar() {
+interface TopBarProps {
+  onMenuClick: () => void;
+}
+
+export default function TopBar({ onMenuClick }: TopBarProps) {
   return (
     <header className="flex justify-between items-center px-6 py-4 w-full bg-background border-b-0">
-      <div className="flex items-center gap-8">
+      <div className="flex items-center gap-4 lg:gap-8">
+        <button 
+          className="md:hidden p-2 text-zinc-500 hover:bg-zinc-200 transition-colors rounded-sm"
+          onClick={onMenuClick}
+        >
+          <Menu className="w-6 h-6" />
+        </button>
         <h1 className="text-xl font-bold tracking-tighter text-primary">Bolsa Española</h1>
-        <nav className="hidden lg:flex items-center gap-6">
+        <nav className="hidden md:flex items-center gap-6">
           <NavLink 
             to="/" 
             className={({ isActive }) => 

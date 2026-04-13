@@ -1,6 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useState } from 'react';
 import Sidebar from './components/Sidebar';
 import TopBar from './components/TopBar';
+import MobileMenu from './components/MobileMenu';
 import Dashboard from './pages/Dashboard';
 import Watchlist from './pages/Watchlist';
 import Portfolio from './pages/Portfolio';
@@ -11,13 +13,16 @@ import Analysis from './pages/Analysis';
 import Sectors from './pages/Sectors';
 
 export default function App() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   return (
     <Router>
       <div className="flex h-screen overflow-hidden bg-background">
         <Sidebar />
+        <MobileMenu isOpen={isMobileMenuOpen} onClose={() => setIsMobileMenuOpen(false)} />
         
         <main className="flex-1 flex flex-col min-w-0">
-          <TopBar />
+          <TopBar onMenuClick={() => setIsMobileMenuOpen(true)} />
           
           <div className="flex-1 overflow-y-auto">
             <Routes>
