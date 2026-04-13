@@ -1,0 +1,5 @@
+{
+  "name": "Bolsa Española Dashboard",
+  "description": "A professional financial dashboard for the Spanish stock market (IBEX 35) featuring real-time indices, instrument tracking, and sector performance.",
+  "requestFramePermissions": []
+}
